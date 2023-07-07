@@ -6,7 +6,20 @@ import time
 
 
 def scraper(username, password):
-    driver = webdriver.Chrome()
+    try:
+        driver = webdriver.Edge()
+    except:
+        try:
+            driver = webdriver.Chrome()
+        except:
+            try:
+                driver = webdriver.Firefox()
+            except:
+                try:
+                    driver = webdriver.Safari()
+                except:
+                    return "Error: No Supported Driver!"
+
 
     driver.get("http://www.irasv1.iub.edu.bd/")
 

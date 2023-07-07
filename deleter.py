@@ -9,9 +9,9 @@ def deleter():
     try:
         os.remove(fr"C:/Users/{x_user}/Downloads/Independent University, Bangladesh.html")
     except:
-        print("Error: No such file exist!")
+        return "Error: No such file exist!"
 
     try:
         shutil.rmtree(os.path.join(fr"C:/Users/{x_user}/Downloads/", "Independent University, Bangladesh_files"))
     except:
-        print("Error: No such folder exist!")
+        return "Error: No such folder exist!"
