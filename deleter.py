@@ -15,4 +15,3 @@ def deleter():
         shutil.rmtree(os.path.join(fr"C:/Users/{x_user}/Downloads/", "Independent University, Bangladesh_files"))
     except:
         return "Error: No such folder exist!"
-
