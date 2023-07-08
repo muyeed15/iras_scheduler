@@ -6,9 +6,9 @@ from merger import merger
 def main():
     print("IRAS_Scheduler; v0.1.2.alpha - By Muyeed")
 
-    ui = input("Enter your username: ")
-    # pi = str(getpass.getpass("Enter your password: "))
-    pi = input("Enter your password: ")
+    ui = input("Enter your ID: ")
+    # pi = str(getpass.getpass("Enter your Password: "))
+    pi = input("Enter your Password: ")
 
     print("Please Wait.... It may take 10~15 seconds")
     scraper(ui, pi)
