@@ -1,10 +1,10 @@
-from scrapper import scraper
+from scraper import scraper
 import getpass
 from merger import merger
 
 
 def main():
-    print("IRAS_Scheduler; v0.1.2.alpha - By Muyeed")
+    print("IRAS_Scheduler; v0.1.3-alpha; By Muyeed")
 
     ui = input("Enter your ID: ")
     # pi = str(getpass.getpass("Enter your Password: "))

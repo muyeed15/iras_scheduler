@@ -60,16 +60,9 @@ def merger():
             sb += 1
         if x != "*":
             if x != "|":
-                if sc == 0:
-                    dat[0][0 + sb] += x
-                if sc == 1:
-                    dat[1][0 + sb] += x
-                if sc == 2:
-                    dat[2][0 + sb] += x
-                if sc == 3:
-                    dat[3][0 + sb] += x
-                if sc == 4:
-                    dat[4][0 + sb] += x
+                for j in range(0, 5):
+                    if sc == j:
+                        dat[j][j + sb] += x
         else:
             sc += 1
 
@@ -83,3 +76,16 @@ def merger():
     table = tabulate(f_dat, headers=head, tablefmt="grid")
 
     print(table)
+
+    def ask():
+        ans = input("\nDo you want to save the schedule in schedule.txt file? Y/N: ").upper()
+        if ans == "Y":
+            print(table, file=open(fr"schedule.txt", "w", encoding="utf-8"))
+            print("==> Saved successfully!")
+        elif ans == "N":
+            pass
+        else:
+            print("Invalid Input!")
+            ask()
+
+    ask()
