@@ -10,7 +10,6 @@ def scraper(username, password):
         driver = webdriver.Edge()
     except:
         try:
-
             driver = webdriver.Chrome()
         except:
             try:
