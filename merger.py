@@ -1,10 +1,9 @@
-from win32_username import win32_username
-
-x_user = win32_username()
+from tabulate import tabulate
+import numpy
 
 
 def merger():
-    a = str(open(fr"C:/Users/{x_user}/Downloads/Independent University, Bangladesh.html", "r", encoding="utf-8").read())
+    a = str(open(fr"data.ini", "r", encoding="utf-8").read())
     a = a.upper()
 
     tokn = a.index("NGCONTENT-")
@@ -14,8 +13,13 @@ def merger():
              f"ng-star-inserted\"><td _ngcontent-{token}-c185=\"\"><strong _ngcontent-{token}-c185=\"\">").upper()
     ay = str("</span></td></tr><!----></tbody></table>").upper()
 
-    ax_i = a.index(ax)
-    ay_i = a.index(ay)
+    try:
+        ax_i = a.index(ax)
+        ay_i = a.index(ay)
+        print("\nCreating the list! Please Wait....")
+    except:
+        print("Error: Wrong Credentials!\n")
+        return
 
     def remove_string_before_index(string, index):
         return string[index:]
@@ -36,11 +40,50 @@ def merger():
     try:
         a1 = a1.replace(f"</SPAN>", "")
     except:
+
         pass
     a1 = remove_string_after_index(a1, a1.index("<") - 1)
 
+    dat = [["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+           ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+           ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+           ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""],
+           ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""]]
+    print("\nSchedule:")
+    # for x in a1:
+    #     if x != "|":
+    #         print(x, end="")
+    #     else:
+    #         print("")
+
+    sc = 0
+    sb = 0
     for x in a1:
-        if x != "|":
-            print(x, end="")
+        if x == "|":
+            sc = 0
+            sb += 1
+        if x != "*":
+            if x != "|":
+                if sc == 0:
+                    dat[0][0 + sb] += x
+                if sc == 1:
+                    dat[1][0 + sb] += x
+                if sc == 2:
+                    dat[2][0 + sb] += x
+                if sc == 3:
+                    dat[3][0 + sb] += x
+                if sc == 4:
+                    dat[4][0 + sb] += x
         else:
-            print("")
+            sc += 1
+
+    for i in range(5):
+        while "" in dat[i]:
+            dat[i].remove("")
+
+    f_dat = numpy.transpose(dat)
+
+    head = ["COURSE NO", "COURSE NAME", "SECTION", "ROOM", "TIME"]
+    table = tabulate(f_dat, headers=head, tablefmt="grid")
+
+    print(table)

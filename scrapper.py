@@ -1,24 +1,26 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import pyautogui
 import time
 
 
 def scraper(username, password):
     try:
-        driver = webdriver.Edge()
+        options = webdriver.EdgeOptions()
+        options.headless = True
+        driver = webdriver.Edge(options=options)
     except:
         try:
-            driver = webdriver.Chrome()
+            options = webdriver.ChromeOptions()
+            options.headless = True
+            driver = webdriver.Chrome(options=options)
         except:
             try:
-                driver = webdriver.Firefox()
+                options = webdriver.FirefoxOptions()
+                options.headless = True
+                driver = webdriver.Firefox(options=options)
             except:
-                try:
-                    driver = webdriver.Safari()
-                except:
-                    return "Error: No Supported Driver!"
+                return "Error: No Supported Driver!"
 
     driver.get("http://www.irasv1.iub.edu.bd/")
 
@@ -28,13 +30,8 @@ def scraper(username, password):
     driver.find_element(By.XPATH, "/html[1]/body[1]/div[1]/app-root[1]/div[1]/div[1]/app-login[1]/div[1]/div[1]/div["
                                   "1]/div[2]/div[2]/form[1]/fieldset[1]/div[3]/button[1]").send_keys(Keys.ENTER)
 
-    time.sleep(4)
-    pyautogui.hotkey('ctrl', 's')
-    time.sleep(1)
-    pyautogui.press('enter')
-    time.sleep(1)
-    pyautogui.press('left')
-    time.sleep(.5)
-    pyautogui.press('enter')
-    time.sleep(3)
+    time.sleep(5)
+    source_html = driver.page_source
+    open(fr"data.ini", "w", encoding="utf-8").write(source_html)
+
     driver.quit()

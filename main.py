@@ -1,16 +1,22 @@
 from scrapper import scraper
-from gui import dat
-from gui import gui
+import getpass
 from merger import merger
-from deleter import deleter
-from clear_credentials import clear_credentials
 
-print("IRAS_Scheduler; V.0.0.2.alpha - By Muyeed")
-gui()
-scraper(dat[0], dat[1])
-print("\n\nSchedule:")
-merger()
-clear_credentials()
-deleter()
-input("\n\nPress Enter to exit...")
-quit()
+
+def main():
+    print("IRAS_Scheduler; v0.1.2.alpha - By Muyeed")
+
+    ui = input("Enter your username: ")
+    # pi = str(getpass.getpass("Enter your password: "))
+    pi = input("Enter your password: ")
+
+    print("Please Wait.... It may take 10~15 seconds")
+    scraper(ui, pi)
+
+    merger()
+
+    input("\n\nPress any key to exit...")
+    quit()
+
+
+main()
