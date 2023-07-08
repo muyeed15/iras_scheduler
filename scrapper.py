@@ -20,7 +20,6 @@ def scraper(username, password):
                 except:
                     return "Error: No Supported Driver!"
 
-
     driver.get("http://www.irasv1.iub.edu.bd/")
 
     driver.find_element(By.XPATH, "//body/div[1]/app-root[1]/div[1]/div[1]/app-login[1]/div[1]/div[1]/div[1]/div["
