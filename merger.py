@@ -4,14 +4,14 @@ x_user = win32_username()
 
 
 def merger():
-    a = str(
-        open(fr"C:/Users/{x_user}/Downloads/Independent University, Bangladesh.html", "r", encoding="utf-8").read()).upper()
+    a = str(open(fr"C:/Users/{x_user}/Downloads/Independent University, Bangladesh.html", "r", encoding="utf-8").read())
+    a = a.upper()
 
     tokn = a.index("NGCONTENT-")
     token = f"{a[tokn + 10]}{a[tokn + 11]}{a[tokn + 12]}".upper()
 
-    ax = str(
-        f"</thead><tbody _ngcontent-{token}-c185=\"\"><tr _ngcontent-{token}-c185=\"\" class=\"reg-courses ng-star-inserted\"><td _ngcontent-{token}-c185=\"\"><strong _ngcontent-{token}-c185=\"\">").upper()
+    ax = str(f"</thead><tbody _ngcontent-{token}-c185=\"\"><tr _ngcontent-{token}-c185=\"\" class=\"reg-courses "
+             f"ng-star-inserted\"><td _ngcontent-{token}-c185=\"\"><strong _ngcontent-{token}-c185=\"\">").upper()
     ay = str("</span></td></tr><!----></tbody></table>").upper()
 
     ax_i = a.index(ax)
@@ -31,9 +31,8 @@ def merger():
     a1 = a1.replace(f"<SPAN _NGCONTENT-{token}-C185=\"\" CLASS=\"LABEL RS-TEXT LABEL-SUCCESS\">", "")
     a1 = a1.replace(f"</SPAN><SPAN _NGCONTENT-{token}-C185=\"\" CLASS=\"LABEL RS-TEXT LABEL-WARNING\">", "*")
     a1 = a1.replace(f"</SPAN>*<SPAN _NGCONTENT-{token}-C185=\"\" CLASS=\"LABEL RS-TEXT LABEL-WARNING\">", "*")
-    a1 = a1.replace(
-        f"</SPAN></TD></TR><TR _NGCONTENT-{token}-C185=\"\" CLASS=\"REG-COURSES NG-STAR-INSERTED\"><TD _NGCONTENT-{token}-C185=\"\"><STRONG _NGCONTENT-{token}-C185=\"\">",
-        "|")
+    a1 = a1.replace(f"</SPAN></TD></TR><TR _NGCONTENT-{token}-C185=\"\" CLASS=\"REG-COURSES NG-STAR-INSERTED\"><TD "
+                    f"_NGCONTENT-{token}-C185=\"\"><STRONG _NGCONTENT-{token}-C185=\"\">", "|")
     try:
         a1 = a1.replace(f"</SPAN>", "")
     except:
