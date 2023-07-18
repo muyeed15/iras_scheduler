@@ -21,39 +21,40 @@ def logui():
     root = Tk()
     root.resizable(False, False)
     root.title("IRAS SCHEDULER")
-    screen_width = 596
-    screen_height = 707
+    screen_width = 592
+    screen_height = 493
     root.geometry(f"{screen_width}x{screen_height}+"
                 f"{int((GetSystemMetrics(0) - screen_width) / 2)}+{int((GetSystemMetrics(1) - screen_height) / 2)}")
 
     root.iconbitmap(fr"iras_scheduler.ico")
 
     try:
-        img = ImageTk.PhotoImage(Image.open("iub.png"))
+        img = ImageTk.PhotoImage(Image.open("iras_scheduler.png"))
         panel = Label(root, image = img)
-        panel.place(x=122, y=10)
+        panel.place(x=30, y=10)
     except:
-        panel = Label(root, text="<image>")
-        panel.place(x=270, y=150)
+        panel = Label(root, text="<image>", foreground="#bababa")
+        panel.place(x=120, y=150)
 
-    ttk.Label(root, text="IRAS\nSCHEDULER", font="arial, 50", foreground="#190685").place(x=90, y=290)
-    ttk.Label(root, text="------------ By Muyeed", font="arial, 20", foreground="#f18019").place(x=250, y=310)
-    ttk.Label(root, text="ID             : ", font="arial, 25", foreground="#f18019").place(x=92, y=480)
-    ttk.Label(root, text="Password : ", font="arial, 25", foreground="#f18019").place(x=92, y=540)
+    ttk.Label(root, text="IRAS", font="arial, 80", foreground="#7fb6e0").place(x=300, y=40)
+    ttk.Label(root, text="SCHEDULER", font="arial, 29", foreground="#0376c8").place(x=305, y=150)
+    ttk.Label(root, text="---------- By Muyeed", font="arial, 20", foreground="#7fb6e0").place(x=308, y=200)
+    ttk.Label(root, text="ID             : ", font="arial, 25", foreground="#0376c8").place(x=44, y=289)
+    ttk.Label(root, text="Password : ", font="arial, 25", foreground="#0376c8").place(x=44, y=349)
 
     id_var = StringVar()
-    id = ttk.Entry(root, textvariable = id_var, width=39)
-    id.place(x=270, y=493)
+    id = ttk.Entry(root, textvariable = id_var, width=50)
+    id.place(x=240, y=300)
 
     passwd_var = StringVar()
-    passwd = ttk.Entry(root, textvariable = passwd_var, width=39, show="*")
-    passwd.place(x=270, y=553)
+    passwd = ttk.Entry(root, textvariable = passwd_var, width=50, show="*")
+    passwd.place(x=240, y=360)
 
     def login():
+        root.destroy()
         scraper(str(id_var.get()), str(passwd_var.get())) # scrape and create data.ini
         try:
             open(fr"user.ini", "w", encoding="utf-8").write(str(id_var.get())) # user.ini input
-            root.destroy()
             gui()
         except:
             open(fr"user.ini", "w", encoding="utf-8").write("") # clear data.ini
@@ -61,8 +62,10 @@ def logui():
             messagebox.showerror("IRAS SCHEDULER", "Error: Wrong Credentials !") # wrong credentials
             exit()
 
-    lob = ttk.Button(text="Login", width=20, command=login)
-    lob.place(x=379, y=600)
+    flob = ttk.Frame(root)
+    flob.place(x=450, y=410)
+    lob = ttk.Button(flob, text="Login", command=login)
+    lob.pack(ipadx=10, ipady=10)
 
     root = mainloop()
 

@@ -126,7 +126,7 @@ def gui():
     # canvases
     cf0 = ttk.Frame(root) # options frame
     cf0.place(x=0, y=0)
-    cop = Canvas(cf0, background="#4287f5", width=223, height=720) # option canvas
+    cop = Canvas(cf0, background="#0376c8", width=223, height=720) # option canvas
     cop.grid(row=0, column=0)
 
     # ui tuning
