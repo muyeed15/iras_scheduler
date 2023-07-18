@@ -1,5 +1,9 @@
-# merge data
-def merger():
+# modules
+from tabulate import tabulate
+import numpy
+
+# txt export
+def exporter():
     # fucntions for removing before and after the schedule positioning strings
     def remove_string_before_index(string, index):
         return string[index:]
@@ -89,102 +93,12 @@ def merger():
     
     # isolated data
     dat0 = isoler(dat0) # data stored in data storage 0
-    
-    # time defininer
-    def time_sorter(week_day):
-        if week_day == "S":
-            pd = week_day
-            ad = "T"
-        elif week_day == "T":
-            pd = week_day
-            ad = "S"
-        elif week_day == "M":
-            pd = week_day
-            ad = "W"
-        elif week_day == "W":
-            pd = week_day
-            ad = "M"
-        elif week_day == "A":
-            pd = week_day
-            ad = "R"
-        elif week_day == "R":
-            pd = week_day
-            ad = "A"
 
-        # time sorting algorithms
-        day_time = []
-        day_idx = []
-        for day_dat in dat0[4]:
-            if pd in day_dat:
-                day_time.append(day_dat)
-                day_idx.append(dat0[4].index(day_dat))
+    t_dat0 = numpy.transpose(dat0) # transposing data storage
 
-        day_s0 = []
-        for day_dat_s0 in day_time:
-            day_dat_s0 = day_dat_s0.replace(" ", "")
-            day_dat_s0 = day_dat_s0.replace(pd, "")
-            try:
-                day_dat_s0 = day_dat_s0.replace(ad, "")
-            except:
-                pass
-            day_dat_s0 = day_dat_s0.replace(":", "")
-            day_dat_s0 = remove_string_after_index(day_dat_s0, 3)
-            day_s0.append(int(day_dat_s0))
-        
-        day_s1 = sorted(day_s0)
-        day_time_idx = []
-        for day_dat_s1 in day_s1:
-            day_time_idx.append(day_s0.index(day_dat_s1))
+    # using tabulate
+    head = ["COURSE NO", "COURSE NAME", "SECTION", "ROOM", "TIME"]
+    table = tabulate(t_dat0, headers=head, tablefmt="grid")
 
-        day_sc_raw = [[], [], [], [], []]
-
-        day_sc_sort = [[], [], [], [], []]
-        
-        for i in range(5):
-            c = 0
-            for item in dat0[i]:
-                if c in day_idx:
-                    day_sc_raw[i].append(item)
-                c += 1
-
-        for j in range(5):
-            for num in day_time_idx:
-                day_sc_sort[j].append(day_sc_raw[j][num])
-
-        if day_sc_sort == [[], [], [], [], []]:
-            return None
-        
-        return day_sc_sort
-    
-    # defining the state of storage
-    try:
-        sat_dat = time_sorter("A")
-    except:
-        sat_dat = None
-
-    try:
-        sun_dat = time_sorter("S")
-    except:
-        sun_dat = None
-
-    try:
-        mon_dat = time_sorter("M")
-    except:
-        mon_dat = None
-
-    try:
-        tue_dat = time_sorter("T")
-    except:
-        tue_dat = None
-
-    try:
-        wed_dat = time_sorter("W")
-    except:
-        wed_dat = None
-
-    try:
-        thu_dat = time_sorter("R")
-    except:
-        thu_dat = None
-
-    return sat_dat, sun_dat, mon_dat, tue_dat, wed_dat, thu_dat
+    # exporting schedulue
+    print(table, file=open(fr"schedule.txt", "w", encoding="utf-8"))
