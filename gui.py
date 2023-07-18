@@ -52,12 +52,12 @@ def gui():
     root.title("IRAS SCHEDULER")
 
     # resolution fittings
-    if xclses <= 4: #707
-        xsh = 472
+    if xclses <= 4:
+        xsh = 493
     elif xclses == 5:
-        xsh = 589
+        xsh = 610
     elif xclses == 6:
-        xsh = 707
+        xsh = 727
     
     screen_width = 596
     screen_height = xsh
@@ -65,6 +65,8 @@ def gui():
                 f"{int((GetSystemMetrics(0) - screen_width) / 2)}+{int((GetSystemMetrics(1) - screen_height) / 2)}")
 
     root.resizable(False, False)
+
+    root.iconbitmap(fr"iras_scheduler.ico")
 
     # menubar
     menubar = Menu(root)
@@ -83,6 +85,7 @@ def gui():
     def devinfo(): # devloper informations
         root = Tk()
         root.resizable(False, False)
+        root.iconbitmap(fr"iras_scheduler.ico")
         root.title("Developer Information")
         screen_width = 300
         screen_height = 150

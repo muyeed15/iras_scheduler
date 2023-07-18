@@ -26,6 +26,8 @@ def logui():
     root.geometry(f"{screen_width}x{screen_height}+"
                 f"{int((GetSystemMetrics(0) - screen_width) / 2)}+{int((GetSystemMetrics(1) - screen_height) / 2)}")
 
+    root.iconbitmap(fr"iras_scheduler.ico")
+
     try:
         img = ImageTk.PhotoImage(Image.open("iub.png"))
         panel = Label(root, image = img)
