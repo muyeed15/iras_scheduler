@@ -1,10 +1,10 @@
-IRAS Scheduler for iRAS : Integrated Registrar's Office Automation System (IUB)
+IRAS Scheduler for iRAS : Integrated Registrar's Office Automation System (Independent University, Bangladesh).
 
 This is a simple python-tkinter GUI program that uses Selenium API to fetch the class schedule from iRAS portal.
 
-Note - 0 : It is totally a free and open-source program, I do not collect any kind of data through it. Your data is locally stored on your machine.
+Note - 1 : It is totally a free and open-source program, I do not collect any kind of data through it. Your data is locally stored on your machine.
 
-Note - 1 : This program was designed to work with windows operating system machines.
+Note - 2 : This program was designed to work with windows operating system machines.
 
 User Friendly Interface:
 
@@ -19,8 +19,8 @@ Save Your Schedule To Text File For Printing:
 
 Recommendation:
 
-1) Dual-Core 64Bit x86 CPU
-2) 4GB Ram
+1) Dual-Core 64bit x86 CPU
+2) 2GB Ram
 3) Windows 10 or greater
 4) Python = 3.10 or Python = 3.11
 
