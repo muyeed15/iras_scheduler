@@ -13,7 +13,6 @@ i0](https://github.com/muyeed15/iras_scheduler/assets/101888493/6fd3e423-758a-40
 ![i2](https://github.com/muyeed15/iras_scheduler/assets/101888493/0edcbb09-132c-46c7-bc4c-08279c3806e0)
 ![i3](https://github.com/muyeed15/iras_scheduler/assets/101888493/c2305a80-aabb-419b-9d3c-384b83e18266)
 
-
 Save Your Schedule To Text File For Printing:
 
 ![is4](https://github.com/muyeed15/iras_scheduler/assets/101888493/2dd48cae-6d06-46a2-a847-be2ef86a0f50)
