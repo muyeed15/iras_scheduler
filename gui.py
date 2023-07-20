@@ -8,6 +8,7 @@ from date import sch_day
 from exporter import exporter
 from updater import updater
 import webbrowser
+from move import move
 
 # main interface
 def gui():
@@ -74,7 +75,8 @@ def gui():
     # menu and commands
     def ex_sch():
         exporter()
-        messagebox.showinfo("IRAS SCHEDULER", "Exported Successfully !")
+        move()
+        messagebox.showinfo("IRAS SCHEDULER", "Exported Successfully to Desktop !")
 
     file = Menu(menubar, tearoff = 0)
     menubar.add_cascade(label ='Options', menu = file)
