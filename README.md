@@ -21,7 +21,7 @@ Recommendation:
 
 1) Dual-Core 64bit x86 CPU
 2) 2GB Ram
-3) Windows 10 or greater
+3) Windows 10 or Greater
 4) Python = 3.10 or Python = 3.11
 
 Recommended modules:
