@@ -42,31 +42,45 @@ def logui():
     ttk.Label(root, text="ID             : ", font="arial, 25", foreground="#0376c8").place(x=44, y=289)
     ttk.Label(root, text="Password : ", font="arial, 25", foreground="#0376c8").place(x=44, y=349)
 
+    # enter id
     id_var = StringVar()
     id = ttk.Entry(root, textvariable = id_var, width=50)
     id.place(x=240, y=300)
 
+    # enter password
     passwd_var = StringVar()
     passwd = ttk.Entry(root, textvariable = passwd_var, width=50, show="*")
     passwd.place(x=240, y=360)
 
+    # login function
     def login():
-        root.destroy()
-        scraper(str(id_var.get()), str(passwd_var.get())) # scrape and create data.ini
-        try:
-            open(fr"user.ini", "w", encoding="utf-8").write(str(id_var.get())) # user.ini input
-            gui()
-        except:
-            open(fr"user.ini", "w", encoding="utf-8").write("") # clear data.ini
-            open(fr"data.ini", "w", encoding="utf-8").write("") # clear data.ini
-            messagebox.showerror("IRAS SCHEDULER", "Error: Wrong Credentials !") # wrong credentials
-            exit()
+        if str(id_var.get()) == "" or str(passwd_var.get()) =="":
+            messagebox.showerror("IRAS SCHEDULER", "ID or Password cannot be empty !")
+        elif len(str(passwd_var.get())) < 3 or len(str(passwd_var.get())) > 50:
+            messagebox.showerror("IRAS SCHEDULER", "Password cannot be less than 3 digits or more than 50 digits !")
+        else:
+            root.destroy()
+            scraper(str(id_var.get()), str(passwd_var.get())) # scrape and create data.ini
+            try:
+                open(fr"user.ini", "w", encoding="utf-8").write(str(id_var.get())) # user.ini input
+                gui()
+            except:
+                open(fr"user.ini", "w", encoding="utf-8").write("") # clear data.ini
+                open(fr"data.ini", "w", encoding="utf-8").write("") # clear data.ini
+                messagebox.showerror("IRAS SCHEDULER", "Error: Wrong Credentials !") # wrong credentials
 
+    # button frame
     flob = ttk.Frame(root)
     flob.place(x=450, y=410)
+
+    # login button
     lob = ttk.Button(flob, text="Login", command=login)
     lob.pack(ipadx=10, ipady=10)
 
+    # press enter to login
+    root.bind("<Return>", lambda event:login())
+
+    # gui loop
     root = mainloop()
 
 # finding data.ini

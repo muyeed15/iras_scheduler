@@ -100,6 +100,7 @@ def gui():
         ttk.Label(root, text="LICENSE: MIT License", font="arial, 10").pack()
         ttk.Label(root, text="@2023", font="arial, 10").pack()
 
+        # gui loop
         root.mainloop()
     
     def up_chk(): # updater
@@ -108,7 +109,7 @@ def gui():
             ans = messagebox.askquestion("Updater", f"A newer version available !\nVersion: {version} --> Version: {check}\nDo you want to update?")
             if ans == "yes":
                 root.destroy()
-                webbrowser.open_new_tab("https://github.com/muyeed15/iras_scheduler/")
+                webbrowser.open_new_tab("https://sourceforge.net/projects/iras-scheduler/")
             else:
                 pass
         else:
@@ -654,8 +655,10 @@ def gui():
         ttk.Label(af0, text=f"ID: {id_dat}", font="arial, 16").pack()
 
         def logout():
+            # clear
             open(fr"user.ini", "w", encoding="utf-8").write("")
             open(fr"data.ini", "w", encoding="utf-8").write("")
+            # destroy
             root.destroy()
 
         # log out
@@ -664,4 +667,5 @@ def gui():
 
     sch_acc()
 
+    # gui loop
     root.mainloop()
