@@ -30,3 +30,4 @@ Recommended modules:
 3) Numpy
 4) Tabulate
 5) Requests
+6) pywin32
