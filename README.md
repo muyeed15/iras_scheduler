@@ -4,7 +4,7 @@ This is a simple python-tkinter GUI program that uses Selenium API to fetch the 
 
 Note - 1 : It is totally a free and open-source program, I do not collect any kind of data through it. Your data is locally stored on your machine.
 
-Note - 2 : This program was designed to work with windows operating system machines.
+Note - 2 : This program was designed to work with Microsoft Windows.
 
 User Friendly Interface:
 
